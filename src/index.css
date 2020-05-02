@@ -1,0 +1,17 @@
+body {
+  font-family: sans-serif;
+	background-image: url("/wallpaper.jpg");
+	background-repeat: repeat;
+	background-attachment: fixed;
+	background-position: center top;
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+	max-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

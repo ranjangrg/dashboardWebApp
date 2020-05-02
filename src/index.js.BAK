@@ -1,0 +1,57 @@
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+/* Importing all components */
+import Notif from './components/layout/Notif';
+import Dashboard from './components/layout/Dashboard';
+import Body from './components/layout/Body';
+import * as serviceWorker from './serviceWorker';
+
+// ONLY for home button 
+let state = {
+  currentMode: 'list'
+};
+
+let requestHome = (_homeRequested) => {
+  state.currentMode = _homeRequested ? 'list' : 'app';
+  console.log(state);
+};
+
+let getMode = () => {
+  return state.currentMode;
+};
+
+// Root contains all the components
+class Root extends Component {
+  render() {
+    return (
+      <div id="root">
+        <div id="notif-div"></div>
+        <div id="body-div"></div>
+        <div id="dash-div"></div>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Notif />,
+  document.getElementById('notif-div')
+);
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Body displayMode={getMode.bind(this)} />
+  </React.StrictMode>,
+  document.getElementById('body-div')
+);
+
+ReactDOM.render(
+  <Dashboard gotoHome={requestHome.bind(this)}/>,
+  document.getElementById('dash-div')
+);
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
